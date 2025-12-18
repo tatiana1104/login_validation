@@ -6,15 +6,16 @@ class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState(); //crear estado mutable
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
-  final _formKey = GlobalKey<FormState>();
-  bool _isObscure = true;
-  bool _isConfirmObscure = true;
+class _RegisterScreenState extends State<RegisterScreen> { //estado mutable
+  final _formKey = GlobalKey<FormState>(); //clave global para el formulario
+  bool _isObscure = true; //variable para controlar la visualidad de la contraseña
+  bool _isConfirmObscure = true; //variable para controlar la visualidad de la confirmacion de contraseña
 
-  final TextEditingController _nameController = TextEditingController();
+  //controladores para los campos de texto
+  final TextEditingController _nameController = TextEditingController(); 
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -23,31 +24,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.grey[100], //fondo claro
       body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
+        child: SingleChildScrollView( //permite desplazamiento si el contenido es mayor que la pantalla
+          padding: const EdgeInsets.all(24.0), //espaciado alrededor del formulario
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center, //centrar verticalmente
             children: [
-              const Icon(
+              const Icon( //icono de registro
                 Icons.person_add,
                 size: 80,
                 color: Colors.blue,
               ),
-              const SizedBox(height: 20.0),
-              const Text(
+              const SizedBox(height: 20.0), //espacio
+              const Text( //titulo
                 'Registro',
                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
               ),
-              const Text(
+              const Text( //subtitulo
                 'Regístrate en Fit Life',
                 style: TextStyle(fontSize: 16.0, color: Colors.grey),
               ),
-              const SizedBox(height: 30.0),
-              Container(
+              const SizedBox(height: 30.0), //espacio
+              Container( //contenedor del formulario
                 padding: const EdgeInsets.all(20.0),
-                decoration: BoxDecoration(
+                decoration: BoxDecoration( //decoracion del contenedor
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12.0),
                   boxShadow: [
@@ -65,7 +66,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       // Campo de nombre
                       TextFormField(
-                        controller: _nameController,
+                        controller: _nameController, //asignar controlador
                         decoration: const InputDecoration(
                           labelText: 'Nombre',
                           prefixIcon: Icon(Icons.person),
@@ -125,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             borderRadius: BorderRadius.all(Radius.circular(8.0)),
                           ),
                         ),
-                        validator: Validator.registerPassword,
+                        validator: Validator.password,
                       ),
                       const SizedBox(height: 20.0),
                       // Campo de confirmar contraseña

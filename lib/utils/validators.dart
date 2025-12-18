@@ -20,7 +20,7 @@ class Validator {
     if (value == null || value.isEmpty) return 'La contraseña es obligatoria'; 
 
     //Validar la longitud minima  caracteres
-    if (value.length < 8) return 'Debe tener al menos 8 caracteres';
+    if (value.length < 6) return 'Debe tener al menos 6 caracteres';
 
     //Validar que contenga al menos una Mayuscula
     // La expresion r'[A-Z]' buscar cualquier letra mayuscula del alfabeto ingles
@@ -53,16 +53,6 @@ class Validator {
     return null;
   }
 
-  // Validar contraseña para registro (min 6 caracteres, 1 mayúscula)
-  static String? registerPassword(String? value) {
-    if (value == null || value.isEmpty) return 'La contraseña es obligatoria';
-    if (value.length < 6) return 'Debe tener al menos 6 caracteres';
-    final hasUpperCase = RegExp(r'[A-Z]');
-    if (!hasUpperCase.hasMatch(value)) {
-      return 'Debe contener al menos una letra mayúscula';
-    }
-    return null;
-  }
 
   // Validar confirmación de contraseña
   static String? confirmPassword(String? value, String? originalPassword) {
